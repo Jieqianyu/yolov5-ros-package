@@ -1,0 +1,17 @@
+<launch>
+    <node pkg="img2box" type="img2box_pub" name="publisher" output="screen">
+    <param name="src_path" value="/home/jm/Documents/codes/detection/src/img2box/images/fishing.mp4"/>
+    </node>
+
+    <node pkg="img2box" type="img2box_pred" name="detector" output="screen">
+    <param name="pt_path" value="/home/jm/Documents/codes/detection/src/img2box/pth/best.torchscript.pt"/>
+    <param name="class_path" value="/home/jm/Documents/codes/detection/src/img2box/pth/class.names"/>
+    <param name="score_thresh" type="double" value="0.4"/>
+    <param name="iou_thresh" type="double" value="0.5"/>
+    <param name="use_gpu" type="bool" value="false"/>
+    <param name="delta" type="double" value="3"/>
+    </node>
+
+    <node pkg="img2box" type="img2box_sub" name="displayer" output="screen"/>
+
+</launch>
